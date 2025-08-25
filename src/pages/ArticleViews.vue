@@ -90,8 +90,8 @@
  * Manages article display, comments, and comment interactions
  */
 
-import { ref, computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { ref, computed, onMounted } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import BaseButton from '../components/BaseButton.vue'
 import BaseCard from '../components/BaseCard.vue'
 import EditCommentModal from '../components/EditCommentModal.vue'
@@ -101,6 +101,7 @@ import { useCommentStore } from '../stores/comment'
 
 // Router and store instances
 const route = useRoute()
+const router = useRouter()
 const articleStore = useArticleStore()
 const userStore = useUserStore()
 const commentStore = useCommentStore()
@@ -115,6 +116,22 @@ const comments = computed(() => commentStore.getCommentsByArticleId(articleId))
 const canEdit = computed(
   () => user.value && article.value && user.value.email === article.value.authorEmail,
 )
+
+// Load data and check if article exists
+onMounted(async () => {
+  // Load all necessary data
+  await articleStore.loadArticles()
+  userStore.loadCurrentUser()
+  commentStore.loadComments()
+
+  // Check if article exists after data is loaded
+  // Use a small delay to ensure reactive updates have processed
+  setTimeout(() => {
+    if (!article.value) {
+      router.push('/not-found')
+    }
+  }, 100)
+})
 
 // Component reactive state
 const newComment = ref('')
