@@ -37,6 +37,10 @@
   margin-top: auto;
 }
 
+.glass-modal {
+  @apply my-auto;
+}
+
 /* Input field styling with glass effect */
 .input {
   background: rgba(255, 255, 255, 0.1);
