@@ -21,4 +21,16 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
+  server: {
+    // Configure development server for SPA routing
+    historyApiFallback: true,
+  },
+  build: {
+    // Ensure SPA routing works in production
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+  },
 })

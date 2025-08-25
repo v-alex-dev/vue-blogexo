@@ -11,11 +11,24 @@ export const useArticleStore = defineStore('article', {
   }),
   actions: {
     /**
-     * Load articles from localStorage
+     * Load articles from localStorage or initialize with fake data
      */
-    loadArticles() {
+    async loadArticles() {
       const data = localStorage.getItem('articles')
-      this.articles = data ? JSON.parse(data) : []
+      if (data) {
+        this.articles = JSON.parse(data)
+      } else {
+        // Load fake data if no localStorage data exists
+        try {
+          const response = await fetch('/fakeData.json')
+          const fakeData = await response.json()
+          this.articles = fakeData.articles || []
+          this.saveArticles() // Save to localStorage for future use
+        } catch (error) {
+          console.error('Failed to load fake data:', error)
+          this.articles = []
+        }
+      }
     },
 
     /**

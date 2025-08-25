@@ -11,6 +11,7 @@ import Login from '../pages/LoginViews.vue'
 import Register from '../pages/RegisterViews.vue'
 import Article from '../pages/ArticleViews.vue'
 import AddEditArticle from '../pages/AddEditArticle.vue'
+import NotFound from '../pages/NotFound.vue'
 
 // Define application routes
 const routes = [
@@ -20,6 +21,7 @@ const routes = [
   { path: '/article/:id', component: Article }, // Individual article view with comments
   { path: '/add-article', component: AddEditArticle }, // Add new article form
   { path: '/edit-article/:id', component: AddEditArticle }, // Edit existing article form
+  { path: '/:pathMatch(.*)*', component: NotFound }, // 404 catch-all route
 ]
 
 // Create and configure the router instance
