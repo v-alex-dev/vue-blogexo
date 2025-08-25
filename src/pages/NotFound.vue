@@ -35,13 +35,11 @@
       <!-- Navigation buttons -->
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <!-- Go back button -->
-        <button @click="goBack" class="btn bg-gray-600 hover:bg-gray-700 text-white">
-          ← Retour
-        </button>
+        <button @click="goBack" class="btn bg-gray-600 hover:bg-gray-700 text-white">Retour</button>
 
         <!-- Home button -->
         <RouterLink to="/" class="btn bg-blue-600 hover:bg-blue-700 text-white">
-          🏠 Accueil
+          Accueil
         </RouterLink>
       </div>
     </BaseCard>
