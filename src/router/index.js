@@ -21,6 +21,7 @@ const routes = [
   { path: '/article/:id', component: Article }, // Individual article view with comments
   { path: '/add-article', component: AddEditArticle }, // Add new article form
   { path: '/edit-article/:id', component: AddEditArticle }, // Edit existing article form
+  { path: '/not-found', component: NotFound }, // 404 page
   { path: '/:pathMatch(.*)*', component: NotFound }, // 404 catch-all route
 ]
 
