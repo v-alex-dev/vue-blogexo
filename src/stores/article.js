@@ -1,19 +1,38 @@
+/**
+ * Article Store - Pinia store for managing blog articles
+ * Handles article creation, editing, retrieval, and persistence
+ */
+
 import { defineStore } from 'pinia'
 
 export const useArticleStore = defineStore('article', {
   state: () => ({
-    articles: [],
+    articles: [], // Array of all blog articles
   }),
   actions: {
+    /**
+     * Load articles from localStorage
+     */
     loadArticles() {
       const data = localStorage.getItem('articles')
       this.articles = data ? JSON.parse(data) : []
     },
+
+    /**
+     * Save articles array to localStorage
+     */
     saveArticles() {
       localStorage.setItem('articles', JSON.stringify(this.articles))
     },
+
+    /**
+     * Create a new blog article
+     * @param {string} title - Article title
+     * @param {string} content - Article content/body
+     * @param {Object} user - Author user object
+     */
     addArticle(title, content, user) {
-      // Ne pas recharger les articles ici pour éviter les boucles réactives
+      // Don't reload articles here to avoid reactive loops
       const article = {
         id: Date.now().toString(),
         title,
@@ -26,11 +45,19 @@ export const useArticleStore = defineStore('article', {
           'dd-MM-yyyy',
         ),
       }
-      this.articles.unshift(article)
+      this.articles.unshift(article) // Add to beginning for newest first
       this.saveArticles()
     },
+
+    /**
+     * Edit an existing article (only by the author)
+     * @param {string} id - Article ID
+     * @param {string} title - New article title
+     * @param {string} content - New article content
+     * @param {Object} user - User attempting to edit (must be author)
+     */
     editArticle(id, title, content, user) {
-      // Ne pas recharger les articles ici pour éviter les boucles réactives
+      // Don't reload articles here to avoid reactive loops
       const idx = this.articles.findIndex((a) => a.id === id && a.authorEmail === user.email)
       if (idx !== -1) {
         this.articles[idx].title = title
@@ -38,8 +65,14 @@ export const useArticleStore = defineStore('article', {
         this.saveArticles()
       }
     },
+
+    /**
+     * Get a specific article by ID
+     * @param {string} id - Article ID
+     * @returns {Object|undefined} - Article object or undefined if not found
+     */
     getArticleById(id) {
-      // Ne pas recharger les articles ici pour éviter les boucles réactives
+      // Don't reload articles here to avoid reactive loops
       return this.articles.find((a) => a.id === id)
     },
   },

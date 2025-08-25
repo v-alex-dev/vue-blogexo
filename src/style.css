@@ -1,8 +1,18 @@
+/**
+ * Global Styles for BlogExo Application
+ * Includes Tailwind CSS imports and custom component styles
+ * Uses glass morphism design pattern for modern UI appearance
+ */
+
+/* Import Tailwind CSS utilities */
 @import 'tailwindcss';
 
+/* Dark gradient background for the application */
 .bg-dark {
   @apply bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900;
 }
+
+/* Glass morphism effect for UI components */
 .glass-header,
 .glass-footer,
 .glass-card,
@@ -10,22 +20,32 @@
 .glass-comment {
   @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-lg;
 }
+
+/* Sticky header positioning */
 .glass-header {
   @apply sticky top-0 z-30;
 }
+
+/* Footer margin for proper layout */
 .glass-footer {
   @apply mt-auto;
 }
+
+/* Input field styling with glass effect */
 .input {
   @apply bg-white/10 border border-white/20 rounded text-white px-[1rem] py-[0.75rem] focus:outline-none focus:ring-2 focus:ring-blue-400;
 }
+
+/* Button base styling */
 .btn {
   @apply bg-blue-500 hover:bg-blue-600 text-white font-semibold py-[0.75rem] px-[1.5rem] rounded transition duration-200;
 }
 
+/* Base button component specific styles */
 .base-btn {
   @apply w-full;
 }
+
 .base-btn:hover {
   @apply bg-blue-700;
 }
