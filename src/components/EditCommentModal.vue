@@ -49,7 +49,7 @@
  * Handles comment editing functionality and modal state management
  */
 
-import { ref, watch, defineProps, defineEmits } from 'vue'
+import { ref, watch } from 'vue'
 
 // Component props
 const props = defineProps({
