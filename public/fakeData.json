@@ -1,0 +1,24 @@
+{
+  "users": [
+    { "username": "Alice", "email": "alice@mail.com", "password": "alice123" },
+    { "username": "Bob", "email": "bob@mail.com", "password": "bob123" }
+  ],
+  "articles": [
+    {
+      "id": "1",
+      "title": "Bienvenue sur le blog !",
+      "content": "Ceci est le premier article.",
+      "author": "Alice",
+      "authorEmail": "alice@mail.com",
+      "create_at": "05-01-2022"
+    },
+    {
+      "id": "2",
+      "title": "Un autre article",
+      "content": "Encore un article pour tester.",
+      "author": "Bob",
+      "authorEmail": "bob@mail.com",
+      "create_at": "08-01-2022"
+    }
+  ]
+}

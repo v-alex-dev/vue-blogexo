@@ -1,0 +1,31 @@
+@import 'tailwindcss';
+
+.bg-dark {
+  @apply bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900;
+}
+.glass-header,
+.glass-footer,
+.glass-card,
+.glass-form,
+.glass-comment {
+  @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-lg;
+}
+.glass-header {
+  @apply sticky top-0 z-30;
+}
+.glass-footer {
+  @apply mt-auto;
+}
+.input {
+  @apply bg-white/10 border border-white/20 rounded text-white px-[1rem] py-[0.75rem] focus:outline-none focus:ring-2 focus:ring-blue-400;
+}
+.btn {
+  @apply bg-blue-500 hover:bg-blue-600 text-white font-semibold py-[0.75rem] px-[1.5rem] rounded transition duration-200;
+}
+
+.base-btn {
+  @apply w-full;
+}
+.base-btn:hover {
+  @apply bg-blue-700;
+}
